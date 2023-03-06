@@ -1,0 +1,44 @@
+// заготовка под иконочный шрифт
+// в папку fonts кладем сам иконочный шрифт в формате ttf
+
+@font-face {
+  font-family: "icons";
+  src: url("../fonts/icons.eot?kakdlm");
+  src: url("../fonts/icons.eot?kakdlm#iefix") format("embedded-opentype"),
+    url("../fonts/icons.ttf?kakdlm") format("truetype"),
+    url("../fonts/icons.woff?kakdlm") format("woff"),
+    url("../fonts/icons.svg?kakdlm#icons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="_icon-"]::before,
+[class*=" _icon-"]::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "icons" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// в заготовке меняем только это - классы с помощью которых будет добавлять иконочный шрифт
+._icon-fb:before {
+  content: "\e900";
+}
+._icon-Group:before {
+  content: "\e901";
+}
+._icon-insta:before {
+  content: "\e902";
+}
+._icon-Linkedin:before {
+  content: "\e903";
+}

@@ -1,0 +1,697 @@
+.header {
+  margin-top: 20px;
+  //   background-color: lightcyan;
+  font-size: 20px;
+  font-weight: 700;
+  &__container {
+    max-width: 1200px;
+    height: 50px;
+    margin: 0px auto;
+    padding: 0 10px;
+    //  border: 1px solid black;
+
+    @media #{$mq-xlarge} {
+      max-width: 1600px;
+    }
+
+    @media #{$mq-xmediumxlarge} {
+      max-width: 1800px;
+    }
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center; //????
+    justify-content: space-between;
+    height: 100%;
+    // justify-content: space-between;
+  }
+
+  &__logo-parent {
+    height: 100%;
+  }
+
+  &__logo {
+    flex: 0 0 60px;
+    //  height: 100%;
+
+    img {
+      height: 90%;
+    }
+  }
+}
+.menu {
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 0 1 70%;
+    height: 100%;
+  }
+
+  &__list {
+    display: flex;
+    flex: 0 0 80%;
+    justify-content: space-around;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 50px;
+    }
+  }
+
+  &__link {
+    color: black;
+  }
+
+  &__profile {
+  }
+}
+
+.my-profile {
+  height: 100%;
+
+  &__block {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__parent {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    height: 70%;
+    align-items: center;
+    gap: 5px;
+    border-radius: 5px;
+    border: 2px solid black;
+    padding: 0px 10px 0px 10px;
+
+    img {
+      height: 40%;
+    }
+  }
+
+  &__img {
+  }
+
+  &__text {
+  }
+}
+
+// section start
+.main {
+  height: calc(100vh - 70px);
+  margin-top: 30px;
+}
+.main-start {
+}
+.section-start {
+  height: 20%;
+
+  &__container {
+    max-width: 1200px;
+    margin: 0px auto;
+    height: 100%;
+    padding: 0 10px;
+    @media #{$mq-xlarge} {
+      max-width: 1600px;
+    }
+
+    @media #{$mq-xmediumxlarge} {
+      max-width: 1800px;
+    }
+  }
+
+  &__block {
+    background: url("../img/Scribble-Light.png") 0% 20%/220px no-repeat,
+      url("../img/Scribble-Light2.png") 100% 80%/220px no-repeat, black;
+    // background-image: url('img/Scribble-Light.png');
+    max-width: 100%;
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 9px 9px 17px -7px rgba(0, 0, 0, 0.67);
+    border-radius: 5px;
+  }
+
+  &__text {
+    flex: 0 1 600px;
+    text-align: center;
+    line-height: 1;
+    font-weight: 700;
+    font-size: 18px;
+    @media #{$mq-xlarge} {
+      line-height: 2;
+      flex: 0 1 800px;
+    }
+
+    @media #{$mq-xmediumxlarge} {
+      line-height: 2.5;
+      flex: 0 1 1000px;
+    }
+  }
+}
+
+// section press "+" to add products
+.main {
+  &__addProducts {
+  }
+}
+.section-addProducts {
+  margin-top: 20px;
+  height: 85%;
+  &__container {
+    max-width: 1200px;
+    margin: 0px auto;
+    height: 100%;
+    padding: 0 10px;
+    @media #{$mq-xlarge} {
+      max-width: 1600px;
+    }
+
+    @media #{$mq-xmediumxlarge} {
+      max-width: 1800px;
+    }
+  }
+
+  &__block {
+    // background: url("../img/Scribble-Dark2.png") 100% 100%/50px no-repeat,
+    //   url("../img/Scribble-Dark3.png") 0% 0%/40px no-repeat, #f0efef;
+    //  border: 1px solid black;
+    background-color: #f0efef;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 700;
+    font-size: 18px;
+    box-shadow: 9px 9px 17px -7px rgba(0, 0, 0, 0.67);
+    border-radius: 5px;
+  }
+
+  &__header {
+    height: 10%;
+    //  border: 1px solid black;
+    border-bottom: 1px solid darkgray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f0efef;
+  }
+
+  &__title {
+  }
+
+  &__summary {
+  }
+
+  &__begin {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    position: relative;
+    overflow: hidden; // благодаря этому слайдре меню заезжает и выезжает их другого блока
+  }
+
+  &__text {
+  }
+
+  &__btn {
+    border: 2px solid lightgrey;
+    background-color: #fff;
+    font-size: 16px;
+    height: 2.5em;
+    width: 2.5em;
+    border-radius: 999px;
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+      border: 2px solid black;
+      transition: all 0.3s ease 0s;
+    }
+
+    &:after,
+    &:before {
+      content: "";
+      display: block;
+      background-color: grey;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:before {
+      height: 1em;
+      width: 0.2em;
+    }
+
+    &:after {
+      height: 0.2em;
+      width: 1em;
+    }
+    &:hover:before,
+    &:hover:after {
+      background-color: black;
+      transition: all 0.3s ease 0s;
+    }
+  }
+}
+
+// slide menu
+.slide-menu {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  // right: 0;
+  width: 90%;
+  // width: 0%;
+  height: 100%;
+  background-color: white;
+  transition: right 0.4s ease-out 0s;
+  // box-shadow: 9px 9px 17px 7px rgba(0, 0, 0, 0.67);
+  box-shadow: -5px 0px 5px -4px rgba(0, 0, 0, 0.24);
+  // transform: translate(120%, 0);
+  overflow: auto;
+
+  &_active {
+    right: 0;
+    // width: 90%;
+  }
+
+  &__wrapper {
+    display: flex;
+    height: 10%;
+    // background-color: yellow;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__form {
+    margin: 5px 0px 10px 20px;
+    height: 10%;
+    input {
+      border: 1px solid #000;
+      padding: 10px 0px 10px 35px;
+      background-color: #f0efef;
+      border-radius: 7px;
+      width: 30%;
+      font-size: 18px;
+      background: url("../img/search-interface-symbol.png") 2% 50% /18px no-repeat;
+    }
+  }
+
+  &__boxForProducts {
+  }
+
+  &__subtitle {
+    padding: 10px 20px;
+    background-color: rgba($color: #dbd9d9, $alpha: 1);
+  }
+
+  &__closeModal {
+    position: absolute;
+    z-index: 2;
+    top: 10px;
+    right: 20px;
+    width: 24px;
+    height: 24px;
+    opacity: 0.9;
+    cursor: pointer;
+    transition: opacity ease 0.5s;
+    // border: 1px solid black;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      display: block;
+      width: 24px;
+      height: 3px;
+      background: #000;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+  &__list {
+    margin: 10px 0px 10px 0px;
+  }
+
+  &__item {
+  }
+}
+.product-card {
+  &__body {
+    height: 20px;
+    width: 100%;
+    // border: 1px solid black;
+    border-bottom: 1px solid #dbd9d9;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 25px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f0efef;
+    }
+  }
+
+  &__img {
+    pointer-events: none;
+  }
+
+  &__title {
+    pointer-events: none;
+  }
+}
+
+// product counter
+.product-counter {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  // right: 0;
+  width: 90%;
+  // width: 0%;
+  height: 100%;
+  background-color: white;
+  transition: right 0.4s ease-out 0s;
+  // box-shadow: 9px 9px 17px 7px rgba(0, 0, 0, 0.67);
+  box-shadow: -5px 0px 5px -4px rgba(0, 0, 0, 0.24);
+  // transform: translate(120%, 0);
+  overflow: auto;
+
+  &_active {
+    right: 0;
+    // width: 90%;
+  }
+
+  &__body {
+    // border: 1px solid #000;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__arrow-back {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__out {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__wrapper1 {
+    flex: 0 1 30%;
+    // border: 1px solid #000;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__wrapper2 {
+    height: 100%;
+    // width: 100%;
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__info-card {
+    // border: 1px solid #000;
+    border: 1px solid #dbd9d9;
+    width: 70%;
+
+    border-radius: 5px;
+  }
+
+  &__img {
+    // border-bottom: 1px solid #000;
+    padding: 10px;
+  }
+
+  &__title {
+    padding: 10px;
+    span {
+      font-weight: 700;
+    }
+  }
+
+  &__portion {
+    padding: 10px;
+    background-color: #f0efef;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__range {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // border: 1px solid #000;
+    border-bottom: 1px solid #dbd9d9;
+    width: 100%;
+    padding: 20px;
+  }
+
+  &__num {
+  }
+
+  &__input {
+  }
+
+  &__portions {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  &__one-portion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    // border: 1px solid #000;
+    border-bottom: 1px solid #dbd9d9;
+    width: 100%;
+    position: relative;
+    padding: 20px;
+  }
+
+  &__gramm {
+  }
+
+  &__gram-num {
+  }
+
+  &__btn {
+    margin-top: 15px;
+    width: 100%;
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 17px;
+    background-color: rgba($color: #6ec4df, $alpha: 0.8);
+    color: white;
+
+    &:hover {
+      background-color: rgba($color: #6ec4df, $alpha: 1);
+    }
+  }
+
+  &__close {
+    width: 20px;
+    height: 20px;
+    opacity: 0.9;
+    cursor: pointer;
+    transition: opacity ease 0.5s;
+    position: relative;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: #000;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+//добавленные продукты
+.added-product {
+  width: 100%;
+  overflow: auto;
+  height: 70%;
+
+  &__list {
+    width: 100%;
+    overflow: auto;
+  }
+
+  &__item {
+    height: 50px;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid #dbd9d9;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 20px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: none;
+  }
+
+  &__img {
+  }
+
+  &__title {
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    pointer-events: none;
+  }
+
+  &__calories {
+  }
+
+  &__quantity {
+  }
+}
+
+
+.edit-product {
+  position: absolute;
+  top: 0;
+  right: -100%;
+  // right: 0;
+  width: 90%;
+  // width: 0%;
+  height: 100%;
+  background-color: white;
+  transition: right 0.4s ease-out 0s;
+  // box-shadow: 9px 9px 17px 7px rgba(0, 0, 0, 0.67);
+  box-shadow: -5px 0px 5px -4px rgba(0, 0, 0, 0.24);
+  // transform: translate(120%, 0);
+  overflow: auto;
+  
+  &_active {
+    right: 0;
+    // width: 90%;
+  }
+  &__body {
+    display: flex;
+    justify-content: space-between;
+    padding:  20px 10px 10px 30px;
+    // align-items: flex-start;
+  }
+
+
+  &__arrow-back {
+    
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    flex: 0 0 90%;
+  }
+
+  &__close {
+    width: 24px;
+    height: 24px;
+    opacity: 0.9;
+    cursor: pointer;
+    transition: opacity ease 0.5s;
+    position: relative;
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #000;
+    }
+
+    &::before {
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      transform: rotate(-45deg);
+    }
+  }
+}

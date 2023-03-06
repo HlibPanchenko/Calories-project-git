@@ -1,0 +1,126 @@
+{
+  "my-products": [
+    {
+      "id": "5",
+      "name": "eggs",
+      "quantity": 96,
+      "calories": 213,
+      "src": "eggs"
+    },
+    {
+      "id": "7",
+      "name": "chicken",
+      "quantity": 248,
+      "calories": 592,
+      "src": "chicken"
+    }
+  ],
+  "products": [
+    {
+      "name": "Яблоко",
+      "calories": 52,
+      "extra-names": [
+        "Яблочко",
+        "Apple"
+      ],
+      "src": "apple",
+      "id": 1
+    },
+    {
+      "name": "Помидор",
+      "calories": 18,
+      "extra-names": [
+        "Tomato",
+        "томат"
+      ],
+      "src": "tomato",
+      "id": 2
+    },
+    {
+      "name": "Апельсин",
+      "calories": 47,
+      "extra-names": [
+        "цитрус",
+        "orange"
+      ],
+      "src": "orange",
+      "id": 3
+    },
+    {
+      "name": "Банан",
+      "calories": 89,
+      "extra-names": [
+        "banan",
+        "banana"
+      ],
+      "src": "banana",
+      "id": 4
+    },
+    {
+      "name": "Яйцо",
+      "calories": 70,
+      "extra-names": [
+        "egg",
+        "eggs",
+        "яйца"
+      ],
+      "src": "eggs",
+      "id": 5
+    },
+    {
+      "name": "Огурец",
+      "calories": 16,
+      "extra-names": [
+        "pickle",
+        "огурцы",
+        "огурчик"
+      ],
+      "src": "pickle",
+      "id": 6
+    },
+    {
+      "name": "Курица",
+      "calories": 239,
+      "extra-names": [
+        "chicken",
+        "курка",
+        "кура"
+      ],
+      "src": "chicken",
+      "id": 7
+    },
+    {
+      "name": "Шоколад",
+      "calories": 546,
+      "extra-names": [
+        "шоколад",
+        "шоколадка",
+        "choco"
+      ],
+      "src": "chocolate",
+      "id": 8
+    },
+    {
+      "name": "Макароны",
+      "calories": 371,
+      "extra-names": [
+        "спагетти",
+        "вермишель",
+        "spaghetti"
+      ],
+      "src": "macaroni",
+      "id": 9
+    },
+    {
+      "name": "Овсянка",
+      "calories": 68,
+      "extra-names": [
+        "овсяная каша",
+        "каша",
+        "porridge"
+      ],
+      "src": "porridge",
+      "id": 10
+    }
+  ]
+}

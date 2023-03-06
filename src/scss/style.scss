@@ -1,0 +1,79 @@
+// Подключаем шрифты с помощью плагина google fonts
+// &display=swap&subset=cyrillic-ext
+@import "fonts"; // в нашем случае этот фаайл ничего не делает, потому что мы все шрифты подключили через googlefonts.
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:regular,italic,700,700italic&display=swap);
+// @import url("https://fonts.googleapis.com/css?family=Heebo:regular,500,700,900&display=swap");
+
+// Icon Font - иконочный шрифт
+@import "iconsfont";
+
+// Обнуление стилей + общие параметры
+body {
+  color: #21243d; // цвет по-умолчанию в проекте
+  // font-size: 14px;
+}
+
+@import "null";
+
+// Шрифт по умолчанию
+$fontFamily: "PT Sans";
+
+body {
+  font-family: $fontFamily;
+  //   font-weight: 500;
+}
+// по умолчанию чтобы футер был прижат
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+// Стили
+@import "header";
+@import "mainContent";
+@import "footer";
+// @import "registration";
+@import "registration2";
+@import "daily-ration";
+
+//Переменные для использование в @media (max-width / min-width)
+// $minWidth: 320px;
+// $maxWidth: 1152; // Максимальная ширина макета
+// $maxWidthContainer: 856;
+// $md1: $maxWidthContainer + 12; // эти 12px делают так, чтобы breakpoint сработал на 12px раньше когда мы уменьшаем размер экрана
+// $md2: 991.98;
+// $md3: 767.98;
+// $md4: 479.98;
+
+//Основная сетка - это готовый адаптивный контейнер
+// у меня оно конфликтует с .header__content в _header.scss. В итоге мы сделали шапку без breakpoints, убрали у шапки класс _container
+// ._container {
+//   max-width: $maxWidthContainer + px;
+//   margin: 0 auto;
+//   @media (max-width: $md1+px) {
+//     max-width: 970px;
+//   }
+//   @media (max-width: $md2+px) {
+//     max-width: 750px;
+//   }
+//   @media (max-width: $md3+px) {
+//     max-width: none;
+//     padding: 0 10px;
+//   }
+// }
+
+// вот тут всего 2 breakpointa
+// ._container {
+//   max-width: $maxWidthContainer + px;
+//   margin: 0 auto;
+//   @media (max-width: $md1+px) {
+//     max-width: 750px;
+//   }
+//   @media (max-width: $md2+px) {
+//     max-width: none;
+//     padding: 0 10px;
+//   }
+// }

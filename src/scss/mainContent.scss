@@ -1,0 +1,54 @@
+// // Заготовки
+// .page {
+//   padding: 90px 0px 0px 0px; // для всех блоков страницы отсуп сверху 90
+//   flex: 1 1 auto;
+//   @media (max-width: 768px) {
+//     padding: 33px 0px 0px 0px;
+//   }
+// }
+
+//   .parentBoxForImg {
+//     @media (min-width: 768px) {
+//       // у нас картинка взята из шаблона, поэтому у нее нормальный размер, ноя написал стили, если бы у нас картинка была произвольного размреа, и ее пришлось бы подганять под нужный нам размер\
+//       flex: 0 0 243px;
+//       height: 243px;
+//     }
+
+//     position: relative;
+//     border-radius: 50%;
+//     overflow: hidden;
+//     box-shadow: -5px 13px 0px 0px #edf7fa; // делаем тень у картинки
+
+//     img {
+//       max-width: 100%;
+//     }
+//     @media (max-width: 768px) {
+//       // flex: 0 0 200px;
+//       width: 170px;
+//       height: 170px;
+//       margin: 0px 0px 40px 0px;
+//     }
+//   }
+
+// // У нас все title на странице одинаковые, поэтому мы вынесли в отдельный класс
+// .title {
+//   font-size: 44px;
+//   line-height: 60 / 44 * 100%;
+//   font-weight: 700;
+//   @media (max-width: 768px) {
+//     font-size: 32px;
+//   }
+// }
+
+// // у нас title по-меньше тоже иногда повторяются, поэтому дадим им отдельный класс
+// .title-posts {
+//   font-size: 22px;
+//   @media (max-width: 768px) {
+//     text-align: center; // ставим тайтл по центру
+//     font-size: 18px;
+//   }
+// }
+
+// .recent-post {
+//   height: 100%; // чтобы flex колонки всегда были одной высоты независимо от количества текста
+// }
