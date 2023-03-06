@@ -1,20 +1,5 @@
 {
-  "my-products": [
-    {
-      "id": "5",
-      "name": "eggs",
-      "quantity": 96,
-      "calories": 213,
-      "src": "eggs"
-    },
-    {
-      "id": "7",
-      "name": "chicken",
-      "quantity": 248,
-      "calories": 592,
-      "src": "chicken"
-    }
-  ],
+  "my-products": [],
   "products": [
     {
       "name": "Яблоко",

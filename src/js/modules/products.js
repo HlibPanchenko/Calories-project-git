@@ -8,6 +8,7 @@ const range = document.querySelector(".product-counter__input");
 const btnAddProduct = document.querySelector(".product-counter__btn");
 const ulList = document.querySelector(".added-product__list");
 const editModalWindow = document.querySelector(".edit-product");
+const deleteProductBtn = document.querySelector(".added-product__close");
 
 // events
 btn.addEventListener("click", openModal);
@@ -19,6 +20,7 @@ document.addEventListener("input", rangeAndCountCalories2);
 document.addEventListener("click", addProductToCart);
 ulList.addEventListener("click", editProduct);
 document.addEventListener("click", addEditedProduct);
+document.addEventListener("click", deleteProduct);
 
 // перед началом работы рендерим на страинцу те продукты, которые лежат в БД
 window.addEventListener("DOMContentLoaded", () => {
@@ -27,8 +29,10 @@ window.addEventListener("DOMContentLoaded", () => {
     .then((data) => {
       data.forEach((product) => {
         // разметка
-        const markUp = `<li class="added-product__item" data-productName =${product.name} data-id = ${product.id}  >
-    <div class="added-product__left">
+        const markUp = `<li class="added-product__item" data-productName =${product.name} data-id = ${product.id} data-caloriesInBD=${product.caloriesInBD} >
+        <div class="added-product__content"> 
+    
+        <div class="added-product__left">
       <div class="added-product__img">
         <img src="./img/img products/${product.src}.png" alt="">
       </div>
@@ -37,7 +41,10 @@ window.addEventListener("DOMContentLoaded", () => {
     <div class="added-product__right">
       <div class="added-product__calories">${product.calories} калорий </div>
       <div class="added-product__quantity">${product.quantity} грамм</div>
+     
     </div>
+        </div>
+        <div class="added-product__close"></div>
   </li>`;
 
         const ulList = document.querySelector(".added-product__list");
@@ -130,7 +137,7 @@ function openProduct(e) {
       <ul class="product-counter__portions" data-calories="${infoAboutProduct.calories}" data-product="${infoAboutProduct.src}" data-id ="${infoAboutProduct.id}">
       <li class="product-counter__one-portion">
       <div class="product-counter__gramm">
-        В 100 граммах ${infoAboutProduct.name} ${infoAboutProduct.calories} каллорий
+        В 100 граммах ${infoAboutProduct.name} <span> ${infoAboutProduct.calories} </span> каллорий
       </div>
     </li>
     <li class="product-counter__one-portion">
@@ -185,12 +192,18 @@ function addProductToCart(e) {
         '[data-summonfood="all-food"]'
       ).innerText;
 
+      const caloriesInBD = parseInt(
+        card.querySelector(".product-counter__gramm").querySelector("span")
+          .innerText
+      );
+
       const dataAboutProduct = {
         id,
         name,
         quantity: parseInt(quantity),
         calories: parseInt(calories),
         src: name,
+        caloriesInBD,
       };
 
       console.log(dataAboutProduct);
@@ -247,6 +260,7 @@ function addProductToCart(e) {
             quantity: parseInt(quantityOfAlreadyExistedProduct),
             calories: parseInt(caloriesOfAlreadyExistedProduct),
             src: name,
+            caloriesInBD,
           };
 
           fetch(`http://localhost:3000/my-products/${updatedProduct.id}`, {
@@ -280,17 +294,21 @@ function addProductToCart(e) {
           });
 
         // // разметка
-        const markUp = `<li class="added-product__item" data-id =${dataAboutProduct.id} data-productName =${dataAboutProduct.name}>
-<div class="added-product__left">
-  <div class="added-product__img">
-    <img src="./img/img products/${dataAboutProduct.name}.png" alt="">
-  </div>
-  <div class="added-product__title">${dataAboutProduct.name}</div>
-</div>
-<div class="added-product__right">
-  <div class="added-product__calories">${dataAboutProduct.calories} калорий </div>
-  <div class="added-product__quantity">${dataAboutProduct.quantity} грамм</div>
-</div>
+        const markUp = `<li class="added-product__item" data-id =${dataAboutProduct.id} data-productName =${dataAboutProduct.name} data-caloriesInBD=${dataAboutProduct.caloriesInBD}>
+        <div class="added-product__content"> 
+        <div class="added-product__left">
+      <div class="added-product__img">
+        <img src="./img/img products/${dataAboutProduct.name}.png" alt="">
+      </div>
+      <div class="added-product__title">${dataAboutProduct.name}</div>
+    </div>
+    <div class="added-product__right">
+      <div class="added-product__calories">${dataAboutProduct.calories} калорий </div>
+      <div class="added-product__quantity">${dataAboutProduct.quantity} грамм</div>
+     
+    </div>
+        </div>
+        <div class="added-product__close"></div>
 </li>`;
 
         // рендерим на страницу
@@ -303,28 +321,30 @@ function addProductToCart(e) {
 }
 
 function editProduct(e) {
-  console.log(e.target); // li
+  if (e.target.classList.contains("added-product__content")) {
+    console.log(e.target); // <div class="added-product__content"></div>
+    const liProduct = e.target.closest(".added-product__item"); // <li class="added-product__item"/>
+    editModalWindow.classList.add("edit-product_active");
 
-  editModalWindow.classList.add("edit-product_active");
+    const data = {
+      id: liProduct.dataset.id,
+      name: liProduct.dataset.productname,
+      quantity: parseInt(
+        liProduct
+          .querySelector(".added-product__quantity")
+          .innerText.replace(/\D+\.?\D+/g, "")
+      ),
+      calories: parseInt(
+        liProduct
+          .querySelector(".added-product__calories")
+          .innerText.replace(/\D+\.?\D+/g, "")
+      ),
+      caloriesInBD: liProduct.dataset.caloriesinbd,
+    };
 
-  const data = {
-    id: e.target.dataset.id,
-    name: e.target.dataset.productname,
-    quantity: parseInt(
-      e.target
-        .querySelector(".added-product__quantity")
-        .innerText.replace(/\D+\.?\D+/g, "")
-    ),
-    calories: parseInt(
-      e.target
-        .querySelector(".added-product__calories")
-        .innerText.replace(/\D+\.?\D+/g, "")
-    ),
-  };
-
-  console.log(data);
-  const out = document.querySelector(".edit-product__content");
-  const markUp = `<div class="product-counter__card" data-id ="${data.id}" >
+    console.log(data);
+    const out = document.querySelector(".edit-product__content");
+    const markUp = `<div class="product-counter__card" data-id ="${data.id}" >
   <div class="product-counter__wrapper1">
     <div class="product-counter__img">
       <img
@@ -346,7 +366,7 @@ function editProduct(e) {
           class="product-counter__input2"
           min="0"
           max="300"
-          value="${data.calories}"
+          value="${data.quantity}"
         />
         <div class="product-counter__num">
           <span class="product-counter__quantity-gramm">
@@ -355,10 +375,10 @@ function editProduct(e) {
           <span class="product-counter__span"> грамм</span>
         </div>
       </div>
-      <ul class="product-counter__portions" data-calories="${data.calories}" data-product="${data.name}" data-id ="${data.id}">
+      <ul class="product-counter__portions" data-calories="${data.calories}" data-product="${data.name}" data-id ="${data.id}" data-caloriesInBD="${data.caloriesInBD}">
       <li class="product-counter__one-portion">
       <div class="product-counter__gramm">
-        В 100 граммах ${data.name} ${data.calories} каллорий
+        В 100 граммах ${data.name} ${data.caloriesInBD} каллорий
       </div>
     </li>
     <li class="product-counter__one-portion">
@@ -379,15 +399,16 @@ function editProduct(e) {
   </div>
 </div>`;
 
-  out.insertAdjacentHTML("beforeend", markUp);
+    out.insertAdjacentHTML("beforeend", markUp);
 
-  out
-    .closest(".edit-product")
-    .querySelector(".edit-product__close")
-    .addEventListener("click", () => {
-      editModalWindow.classList.remove("edit-product_active");
-      out.innerHTML = "";
-    });
+    out
+      .closest(".edit-product")
+      .querySelector(".edit-product__close")
+      .addEventListener("click", () => {
+        editModalWindow.classList.remove("edit-product_active");
+        out.innerHTML = "";
+      });
+  }
 }
 //
 function rangeAndCountCalories2(e) {
@@ -401,7 +422,7 @@ function rangeAndCountCalories2(e) {
     const outCalories = card.querySelector('[data-summonfood="all-food"]');
 
     const nameOfCurrentCard = card.querySelector("[data-product]");
-    const caloriesOfProduct = nameOfCurrentCard.dataset.calories;
+    const caloriesOfProduct = nameOfCurrentCard.dataset.caloriesinbd;
     const amountOfCalories =
       (parseInt(e.target.value) * parseInt(caloriesOfProduct)) / 100;
     outCalories.innerText = amountOfCalories;
@@ -453,6 +474,28 @@ function addEditedProduct(e) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dataAboutProduct),
+    })
+      .then((res) => res.json())
+      .then((json) => countCalories());
+  }
+}
+
+function deleteProduct(e) {
+  if (e.target.classList.contains("added-product__close")) {
+    console.log("kotiki");
+    const productWeWantToDelete = e.target.closest("li");
+    console.log(productWeWantToDelete);
+    const id = productWeWantToDelete.dataset.id;
+    console.log(id);
+    // удаляем продукт с разметки
+    productWeWantToDelete.remove();
+
+    // удаляем с БД
+    fetch(`http://localhost:3000/my-products/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
       .then((res) => res.json())
       .then((json) => countCalories());
